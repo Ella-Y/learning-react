@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
+  //1. constructor를 사용하는 방법
+  //   constructor(props) {
+  //     super(props);
+  //     //state의 초기 값 설정
+  //     this.state = {
+  //       number: 0,
+  //       fixedNumber: 0,
+  //     };
+  //   }
+
+  //2. constructor 를 사용하지 않고 state를 설정하는 방법
   state = {
     number: 0,
-    fixedNumber: 0
+    fixedNumber: 0,
   };
   render() {
     const { number, fixedNumber } = this.state; // state 를 조회 할 때에는 this.state 로 조회합니다.
@@ -26,7 +37,7 @@ class Counter extends Component {
             // }));
             this.setState(
               {
-                number: number + 1
+                number: number + 1,
               },
               () => {
                 console.log('방금 setState 가 호출되었습니다.');
