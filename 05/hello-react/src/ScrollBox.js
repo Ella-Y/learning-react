@@ -7,7 +7,16 @@ class ScrollBox extends Component {
     const scrollHeight = this.box.scrollHeight;
     const clientHeight = this.box.cliengHeight;
     */
+    //아래의 값들은 DOM노드가 가진 값들을 사용
+    //scrollTop:세로 스크롤바 위치
+    //scrollHeight: 스크롤이 있는 박스 안의 높이(650)
+    //clientHeight: 스크롤이 있는 박스의 높이(300)
+
     this.box.scrollTop = scrollHeight - clientHeight;
+  };
+  scrollToTop =()=>{
+    //const {clientHeight} = this.box;
+    this.box.scrollTop = 0;
   };
 
   render() {

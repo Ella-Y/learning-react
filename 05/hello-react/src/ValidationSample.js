@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ValidationSample.css';
 class ValidationSample extends Component {
-  input = React.createRef();
+  input = React.createRef(); //ref 작성
   state = {
     password: '',
     clicked: false,
@@ -17,6 +17,7 @@ class ValidationSample extends Component {
       clicked: true,
       validated: this.state.password === '0000'
     });
+    //이후 사용할때는 this.input.current를 이용해 접근해야 함.
     this.input.current.focus();
   };
   render() {
