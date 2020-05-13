@@ -25,7 +25,14 @@ class Counter extends Component {
         <button
           // onClick 을 통하여 버튼이 클릭됐을 때 호출 할 함수를 지정합니다.
           onClick={() => {
-            // this.setState(prevState => {
+            //1. 아래의 코드는 setState를 2번 호출함에도 한번만 올라간다.
+            //setState를 한다고 해서 바로 올라가는 것이 아니기 때문.
+            //this.setState({number:number+1});
+            //this.setState({number:number+1});
+            
+            //2. 이런 경우에, 아래처럼 함수를 인자로 넣어주면 된다.
+            //prevState:기존상태, props: 현재 지니고 있는 props (optional)
+            // this.setState((prevState,props) => {
             //   return {
             //     number: prevState.number + 1
             //   };
@@ -39,6 +46,7 @@ class Counter extends Component {
               {
                 number: number + 1,
               },
+              //setState 작업이 끝난 이후, 특정작업 실행하기
               () => {
                 console.log('방금 setState 가 호출되었습니다.');
                 console.log(this.state);
