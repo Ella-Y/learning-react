@@ -5,6 +5,7 @@ class ErrorBoundary extends Component {
     error: false
   };
   componentDidCatch(error, info) {
+    //컴포넌트 실행 도중 에러가 발생했을 때..
     this.setState({
       error: true
     });
