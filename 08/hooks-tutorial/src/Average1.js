@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useMemo } from 'react';
 
 const getAverage = numbers => {
   console.log('평균값 계산중..');
@@ -7,30 +7,31 @@ const getAverage = numbers => {
   return sum / numbers.length;
 };
 
-const Average = () => {
+const Average1 = () => {
   const [list, setList] = useState([]);
   const [number, setNumber] = useState('');
-  const inputEl = useRef(null); //reference 생성
-
-  const onChange = useCallback(e => {
+  
+  //최적화 가능
+  //컴포넌트가 ReRendering 될 때마다 새로 생성됨
+  const onChange = e => {
     setNumber(e.target.value);
-  }, []); // 컴포넌트가 처음 렌더링 될 때만 함수 생성
+  };
 
-  const onInsert = useCallback(() => {
+  const onInsert = () => {
     const nextList = list.concat(parseInt(number));
     setList(nextList);
     setNumber('');
-    inputEl.current.focus(); //값이 삽입되고 나서 input으로 focus 이동
-
-  }, [number, list]); // number 혹은 list 가 바뀌었을 때만 함수 생성
+    
+  };
 
   //렌더링 과정에서 특정 값이 바뀌었을 때만 연산을 실행하고,
   //원하는 값이 바뀌지 않았으면 이전 결과 값을 그대로 사용하는 방식
+  //이게 없으면 인풋 내용이 수정될 때도 함수가 호출 됨..
   const avg = useMemo(() => getAverage(list), [list]);
 
   return (
     <div>
-      <input value={number} onChange={onChange} ref={inputEl} />
+      <input value={number} onChange={onChange} />
       <button onClick={onInsert}>등록</button>
       <ul>
         {list.map((value, index) => (
@@ -44,4 +45,4 @@ const Average = () => {
   );
 };
 
-export default Average;
+export default Average1;

@@ -76,8 +76,9 @@ class LifeCycleSample extends Component {
     return (
       // 79line은 강제로 에러를 발생 시킴
       // 존재하지 않는 함수를 사용하거나, 존재하지 않는 객체의 값을 조회하려고 할때.
+      // ErrorBoundary.js 에서 에러를 띄우게 된다.
       <div>
-        {this.props.missing.value}
+        {/* {this.props.missing.value} */}
         <h1 style={style} ref={ref => (this.myRef = ref)}>
           {this.state.number}
         </h1>

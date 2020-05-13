@@ -14,6 +14,8 @@ function reducer(state, action) {
 }
 
 const Counter = () => {
+  //useReducer(reducer함수, 리듀서의 기본 값);
+  //Reducer의 장점: 컴포넌트 업데이트 로직을 컴포넌트 바깥으로 빼낼 수 있음
   const [state, dispatch] = useReducer(reducer, { value: 0 });
 
   return (
